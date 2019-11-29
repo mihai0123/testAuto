@@ -2,63 +2,75 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-public class Program
+namespace ConsoleApp1
 {
-    public static void Main()
+
+    public class Program
     {
-
-        List<string> strList = new List<string>();
-        strList.Add("anA");
-        strList.Add("elena");
-        strList.Add("MARIA");
-        strList.Add("cRisTiAn");
-
-        TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-
-        string lowerNames = "";
-        string concatenatedNames = "";
-
-        for (int i = 0; i < strList.Count; i++)
+        public static void Main()
         {
-            lowerNames = lowerNames + strList[i].ToLower() + ", ";
-            concatenatedNames = concatenatedNames + strList[i] + ", ";
-        }
 
-        Console.WriteLine("{0} -> {1}", concatenatedNames.Remove(concatenatedNames.Length - 2),
-            myTI.ToTitleCase(lowerNames).Remove(lowerNames.Length - 2));
+            List<string> strList = new List<string>();
+            strList.Add("anA");
+            strList.Add("elena");
+            strList.Add("MARIA");
+            strList.Add("cRisTiAn");
 
-        displayNamesVowels(strList);
-        displayNamesConsonants(strList);
+            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
-    }
+            string lowerNames = "";
+            string concatenatedNames = "";
 
-    public static void displayNamesVowels(List<string> elements)
-    {
-        string vowels = "aeiou";
-        foreach (var element in elements)
-        {
-            bool startsWithVowel = vowels.Contains((element[0]).ToString().ToLower());
-            if (startsWithVowel)
+            for (int i = 0; i < strList.Count; i++)
             {
-                Console.WriteLine(element);
+                lowerNames = lowerNames + strList[i].ToLower() + ", ";
+                concatenatedNames = concatenatedNames + strList[i] + ", ";
             }
 
-        }
-        Console.ReadLine();
-    }
+            Console.WriteLine("{0} -> {1}", concatenatedNames.Remove(concatenatedNames.Length - 2),
+                myTI.ToTitleCase(lowerNames).Remove(lowerNames.Length - 2));
 
-    public static void displayNamesConsonants(List<string> elements)
-    {
-        string consonants = "bcdfghjklmnpqrstvwxz";
-        foreach (var element in elements)
+            displayNamesVowels(strList);
+            displayNamesConsonants(strList);
+
+            Car car1 = new Car("Dacia", "Logan", "B 111 UNU", "2012", 12345);
+            Console.Write(car1.ToString());
+            car1.PrinterFriendly();
+
+            Console.ReadLine();
+
+        }
+
+        public static void displayNamesVowels(List<string> elements)
         {
-            bool startsWithConsonant = consonants.Contains((element[0]).ToString().ToLower());
-            if (startsWithConsonant)
+            string vowels = "aeiou";
+            foreach (var element in elements)
             {
-                Console.WriteLine(element);
+                bool startsWithVowel = vowels.Contains((element[0]).ToString().ToLower());
+                if (startsWithVowel)
+                {
+                    Console.WriteLine(element);
+                }
+
             }
 
+            Console.ReadLine();
         }
-        Console.ReadLine();
+
+        public static void displayNamesConsonants(List<string> elements)
+        {
+            string consonants = "bcdfghjklmnpqrstvwxz";
+            foreach (var element in elements)
+            {
+                bool startsWithConsonant = consonants.Contains((element[0]).ToString().ToLower());
+                if (startsWithConsonant)
+                {
+                    Console.WriteLine(element);
+                }
+
+            }
+
+            Console.ReadLine();
+        }
     }
 }
