@@ -12,6 +12,6 @@
 
         public string YearOfInitialRegistration;
 
-        public int CurrentValue1;
+        public int CurrentValue;
     }
 }
